@@ -1,7 +1,6 @@
+const PostsController = require('../controllers/PostsController')
+
 module.exports = (app) => {
-  app.get('/status', (req, res) => {
-    res.send({
-      message: 'Hello Worlds'
-    })
-  })
+  app.get('/posts',
+    PostsController.index)
 }

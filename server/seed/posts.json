@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Titre1",
+    "article": "Article1",
+    "imageUrl": "ImageUrl1"
+  },
+  {
+    "title": "Titre2",
+    "article": "Article2",
+    "imageUrl": "ImageUrl2"
+  },
+  {
+    "title": "Titre3",
+    "article": "Article3",
+    "imageUrl": "ImageUrl3"
+  },
+  {
+    "title": "Titre4",
+    "article": "Article4",
+    "imageUrl": "ImageUrl4"
+  }
+]
