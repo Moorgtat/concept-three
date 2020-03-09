@@ -1,6 +1,6 @@
 <template>
   <div id="register">
-    <h2>Register</h2>
+    <h1>Register</h1>
     <input type="email" name="email" v-model="email" placeholder="email"/>
     <br>
     <input type="password" name="password" v-model="password" placeholder="password"/>
@@ -29,9 +29,9 @@ export default {
           email: this.email,
           password: this.password
         })
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
-        this.$router.push('/songs')
+        await this.$store.dispatch('setToken', response.data.token)
+        await this.$store.dispatch('setUser', response.data.user)
+        await this.$router.push('/songs')
       } catch (error) {
         this.error = error.response.data.error
       }

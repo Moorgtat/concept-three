@@ -1,6 +1,6 @@
 <template>
 <div class="blog">
-  <h3>Hello Worlds</h3>
+  <h1>Home</h1>
   <div class="post-container">
     <div class="post" v-for="post in posts" :key="post.id">
       <div class="post-title">{{ post.title }}</div>

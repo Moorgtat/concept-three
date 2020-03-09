@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import blog from '../components/blog/blog.vue'
+import blog from '../components/blog/blog'
+import admin from '../components/admin/admin'
+import login from '../components/auth/login'
+import register from '../components/auth/register'
 
 Vue.use(VueRouter)
 
@@ -9,6 +12,21 @@ const routes = [
     path: '/',
     name: 'blog',
     component: blog
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: admin
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: register
   }
 ]
 
