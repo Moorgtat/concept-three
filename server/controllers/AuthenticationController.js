@@ -32,7 +32,6 @@ module.exports = {
           email: email
         }
       })
-
       if (!user) {
         return res.status(403).send({
           error: 'Incorrect Email information'
@@ -47,6 +46,7 @@ module.exports = {
       }
 
       const userJson = user.toJSON()
+      console.log('user', user.toJSON())
       res.send({
         user: userJson,
         token: jwtSignUser(userJson)
