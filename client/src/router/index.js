@@ -2,9 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import blog from '../components/blog/blog'
 import admin from '../components/admin/admin'
-import store from '../components/store/store'
+import shop from '../components/shop/shop'
 import login from '../components/auth/login'
 import register from '../components/auth/register'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -17,12 +18,13 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: admin
+    component: admin,
+    meta: { requiresAuth: true }
   },
   {
-    path: '/store',
-    name: 'store',
-    component: store
+    path: '/shop',
+    name: 'shop',
+    component: shop
   },
   {
     path: '/login',
@@ -43,13 +45,17 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/', '/store', '/login', '/register']
-  const authRequired = !publicPages.includes(to.path)
-
-  if (authRequired && !!this.$store.state.isUserLoggedIn) {
-    return next('/')
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.state.isAdminLoggedIn) {
+      next()
+    } else {
+      next({
+        path: '/'
+      })
+    }
+  } else {
+    next()
   }
-  next()
 })
 
 export default router

@@ -1,5 +1,11 @@
 <template>
 <div class="blog">
+<div v-if="this.$store.state.isAdminLoggedIn">
+  <h1>True</h1>
+</div>
+  <div v-if="!this.$store.state.isAdminLoggedIn">
+    <h1>false</h1>
+  </div>
   <h1>Home</h1>
   <div class="post-container">
     <div class="post" v-for="post in posts" :key="post.id">

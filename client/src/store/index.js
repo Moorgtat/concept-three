@@ -8,9 +8,14 @@ export default new Vuex.Store({
   state: {
     token: null,
     user: null,
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    isAdminLoggedIn: false
   },
   mutations: {
+    setStatus (state, status) {
+      state.status = status
+      state.isAdminLoggedIn = !!status
+    },
     setToken (state, token) {
       state.token = token
       state.isUserLoggedIn = !!token
@@ -20,6 +25,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    setStatus ({ commit }, status) {
+      commit('setStatus', status)
+    },
     setToken ({ commit }, token) {
       commit('setToken', token)
     },

@@ -1,6 +1,12 @@
 [
   {
     "email": "mat.lecardinal@gmail.com",
-    "password": "12345678"
+    "password": "12345678",
+    "isAdmin": true
+  },
+  {
+    "email": "olivia.rocaboy@gmail.com",
+    "password": "12345678",
+    "isAdmin": false
   }
 ]
