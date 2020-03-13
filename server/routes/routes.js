@@ -11,9 +11,17 @@ module.exports = (app) => {
 
   app.get('/posts',
     PostsController.index)
+  app.post('/posts',
+    PostsController.post)
+  app.put('/posts/:postId',
+    PostsController.put)
 
   app.get('/products',
     ProductsController.index)
+  app.post('/products',
+    ProductsController.post)
+  app.put('/products/:productId',
+    ProductsController.put)
 
   app.get('/', (req, res) =>{
     res.send ('Hello World')

@@ -1,22 +1,27 @@
 [
   {
-    "title": "Titre1",
-    "article": "Article1",
-    "imageUrl": "ImageUrl1"
+    "title": "Elixir de force",
+    "article": "Triple la force du receveur.",
+    "imageUrl": "L'elixir est violet."
   },
   {
-    "title": "Titre2",
-    "article": "Article2",
-    "imageUrl": "ImageUrl2"
+    "title": "Elixir d'intelligence'",
+    "article": "Triple l'inteligence du receveur.",
+    "imageUrl": "L'elixir est bleu."
   },
   {
-    "title": "Titre3",
-    "article": "Article3",
-    "imageUrl": "ImageUrl3"
+    "title": "Elixir de dextérité'",
+    "article": "Triple la dextérité du receveur.",
+    "imageUrl": "L'elixir est vert."
   },
   {
-    "title": "Titre4",
-    "article": "Article4",
-    "imageUrl": "ImageUrl4"
+    "title": "Elixir de sagesse'",
+    "article": "Triple la sagesse du receveur.",
+    "imageUrl": "L'elixir est mauve."
+  },
+  {
+    "title": "Elixir de vie",
+    "article": "Soigne de toutes maladies et de tous les maux.",
+    "imageUrl": "L'elixir est rouge vif."
   }
 ]

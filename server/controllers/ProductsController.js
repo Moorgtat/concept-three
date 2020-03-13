@@ -12,5 +12,29 @@ module.exports = {
         error: 'fetching products error'
       })
     }
+  },
+  async post (req, res) {
+    try {
+      const product = await Product.create(req.body)
+      res.send(product)
+    } catch (err) {
+      res.status(500).send({
+        error: 'Creating product error'
+      })
+    }
+  },
+  async put (req, res) {
+    try {
+      await Product.update(req.body, {
+        where: {
+          id: req.params.productId
+        }
+      })
+      res.send(' Product updated')
+    } catch (err) {
+      res.status(500).send({
+        error: 'Error editing the product'
+      })
+    }
   }
 }

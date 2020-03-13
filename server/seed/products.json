@@ -1,30 +1,30 @@
 [
   {
-    "title": "product1",
-    "description": "description1",
-    "price": "20",
-    "quantity": "2",
-    "imageUrl": "image1"
+    "title": "Excalibur",
+    "description": "Une épée parfaite en tous point.",
+    "price": 15520,
+    "quantity": 1,
+    "imageUrl": "Légèrement doré, elle brille au soleil ou au contact de l'eau."
   },
   {
-    "title": "product2",
-    "description": "description2",
-    "price": "20",
-    "quantity": "2",
-    "imageUrl": "image2"
+    "title": "Armure d'épines",
+    "description": "Une armure qui protège autant qu'elle inflige de dégats.",
+    "price": 8520,
+    "quantity": 1,
+    "imageUrl": "Epineusement mortel, une flêche tiré a bout portant n'atteindrait pas votre epiderme."
   },
   {
-    "title": "product3",
-    "description": "description3",
-    "price": "20",
-    "quantity": "2",
-    "imageUrl": "image3"
+    "title": "Parsifal",
+    "description": "Un bouclier infranchissable qui ne peut être porté que par un Palladin.",
+    "price": 7358,
+    "quantity": 1,
+    "imageUrl": "Haut et large de deux toise, son bleu renvoit n'importe quels type de degats, physique ou magique."
   },
   {
-    "title": "product4",
-    "description": "description4",
-    "price": "20",
-    "quantity": "2",
-    "imageUrl": "image4"
+    "title": "Cape du voleur",
+    "description": "Une cape qui dissimule vos méfaits et vous rends plus habile.",
+    "price": 1358,
+    "quantity": 12,
+    "imageUrl": "Noir comme la nuit, profonde comme l'ennui."
   }
 ]

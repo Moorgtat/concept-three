@@ -12,5 +12,29 @@ module.exports = {
         error: 'fetching posts error'
       })
     }
+  },
+  async post (req, res) {
+    try {
+      const post = await Post.create(req.body)
+      res.send(post)
+    } catch (err) {
+      res.status(500).send({
+        error: 'Creating posts error'
+      })
+    }
+  },
+  async put (req, res) {
+    try {
+      await Post.update(req.body, {
+        where: {
+          id: req.params.postId
+        }
+      })
+      res.send(' Post updated')
+    } catch (err) {
+      res.status(500).send({
+        error: 'Error editing the post'
+      })
+    }
   }
 }
