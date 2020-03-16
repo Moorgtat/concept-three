@@ -8,6 +8,8 @@ import login from '../components/auth/login'
 import register from '../components/auth/register'
 import newPost from '@/components/admin/newPost'
 import newProduct from '@/components/admin/newProduct'
+import editPost from '@/components/admin/editPost'
+import editProduct from '@/components/admin/editProduct'
 import store from '../store/index'
 
 Vue.use(VueRouter)
@@ -54,6 +56,16 @@ const routes = [
     path: '/newproduct',
     name: 'newproduct',
     component: newProduct
+  },
+  {
+    path: '/editpost/:postId',
+    name: 'editpost',
+    component: editPost
+  },
+  {
+    path: '/editproduct',
+    name: 'editproduct',
+    component: editProduct
   }
 ]
 
