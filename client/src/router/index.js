@@ -6,10 +6,12 @@ import admin from '../components/admin/admin'
 import shop from '../components/shop/shop'
 import login from '../components/auth/login'
 import register from '../components/auth/register'
-import newPost from '@/components/admin/newPost'
-import newProduct from '@/components/admin/newProduct'
-import editPost from '@/components/admin/editPost'
-import editProduct from '@/components/admin/editProduct'
+import postAdd from '@/components/admin/postAdd'
+import productAdd from '@/components/admin/productAdd'
+import postEdit from '@/components/admin/postEdit'
+import productEdit from '@/components/admin/productEdit'
+import postView from '@/components/admin/postView'
+import productView from '@/components/admin/productView'
 import store from '../store/index'
 
 Vue.use(VueRouter)
@@ -30,7 +32,44 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: admin,
-    meta: { requiresAdminAuth: true }
+    meta: { requiresAdminAuth: true },
+    children: [
+      {
+        path: '/postview',
+        name: 'postView',
+        component: postView,
+        meta: { requiresAdminAuth: true }
+      },
+      {
+        path: '/postadd',
+        name: 'postAdd',
+        component: postAdd,
+        meta: { requiresAdminAuth: true }
+      },
+      {
+        path: '/postedit/:postId',
+        name: 'postEdit',
+        component: postEdit,
+        meta: { requiresAdminAuth: true }
+      },
+      {
+        path: '/productview',
+        name: 'productView',
+        component: productView,
+        meta: { requiresAdminAuth: true }
+      },
+      {
+        path: '/productadd',
+        name: 'productAdd',
+        component: productAdd,
+        meta: { requiresAdminAuth: true }
+      },
+      {
+        path: '/productedit',
+        name: 'productEdit',
+        component: productEdit,
+        meta: { requiresAdminAuth: true }
+      }]
   },
   {
     path: '/shop',
@@ -46,26 +85,6 @@ const routes = [
     path: '/register',
     name: 'register',
     component: register
-  },
-  {
-    path: '/newpost',
-    name: 'newpost',
-    component: newPost
-  },
-  {
-    path: '/newproduct',
-    name: 'newproduct',
-    component: newProduct
-  },
-  {
-    path: '/editpost/:postId',
-    name: 'editpost',
-    component: editPost
-  },
-  {
-    path: '/editproduct',
-    name: 'editproduct',
-    component: editProduct
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-<div class="newpost">
+<div class="postadd">
   <label>
     <input type="text" name="title" v-model="post.title" placeholder="title"/>
   </label>
@@ -20,7 +20,7 @@
 <script>
 import PostService from '@/services/PostService'
 export default {
-  name: 'newPost',
+  name: 'postAdd',
   data () {
     return {
       error: null,

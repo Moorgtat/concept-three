@@ -6,9 +6,6 @@
       <div class="post-title">{{ post.title }}</div>
       <div class="post-article">{{ post.article }}</div>
       <div class="post-imageUrl">{{ post.imageUrl }}</div>
-      <RouterLink :to="{ name: 'editpost', params: {postId: post.id} }">
-        <button>Edit</button>
-      </RouterLink>
     </div>
   </div>
 </div>

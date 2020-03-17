@@ -1,5 +1,5 @@
 <template>
-  <div class="newproduct">
+  <div class="productadd">
     <label>
       <input type="text" name="title" v-model="product.title" placeholder="title"/>
     </label>
@@ -28,7 +28,7 @@
 <script>
 import ProductService from '@/services/ProductService'
 export default {
-  name: 'newProduct',
+  name: 'productAdd',
   data () {
     return {
       error: null,

@@ -1,5 +1,5 @@
 <template>
-    <div class="editpost">
+    <div class="post-edit">
       <h1>Edit Post</h1>
       <p>{{ postId }}</p>
     </div>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'editPost',
+  name: 'postEdit',
   data () {
     return {
       postId: null
