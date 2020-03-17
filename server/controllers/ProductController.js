@@ -50,11 +50,7 @@ module.exports = {
   async delete (req, res) {
     try {
       const { productId } = req.query
-      const product = await Product.findOne({
-        where: {
-          ProductId: productId
-        }
-      })
+      const product = await Product.findByPk(productId)
       await product.destroy()
       res.send(product)
     } catch (error) {

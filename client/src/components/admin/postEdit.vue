@@ -1,20 +1,64 @@
 <template>
     <div class="post-edit">
       <h1>Edit Post</h1>
-      <p>{{ postId }}</p>
+      <br>
+      <label>
+        <input type="text" name="title" v-model="post.title" placeholder="title"/>
+      </label>
+      <br>
+      <label>
+        <input type="text" name="title" v-model="post.article" placeholder="article"/>
+      </label>
+      <br>
+      <label>
+        <input type="text" name="title" v-model="post.imageUrl" placeholder="imageurl"/>
+      </label>
+      <br>
+      <div v-html="error"></div>
+      <button  @click="editPost">Edit</button>
+      <button  @click="deletePost">Delete</button>
     </div>
 </template>
 
 <script>
+import PostService from '@/services/PostService'
 export default {
   name: 'postEdit',
   data () {
     return {
-      postId: null
+      error: null,
+      post: {
+        title: null,
+        article: null,
+        imageUrl: null
+      }
     }
   },
-  mounted () {
-    this.postId = this.$store.state.route.params.postId
+  methods: {
+    async editPost () {
+      try {
+        await PostService.put(this.post)
+        await this.$router.push({
+          name: 'postView'
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      }
+    },
+    async deletePost () {
+      try {
+        await PostService.delete({
+          postId: this.post.id
+        })
+        await this.$router.push('/postview')
+      } catch (error) {
+        window.console.log(error)
+      }
+    }
+  },
+  async mounted () {
+    const postId = this.$store.state.route.params.postId
+    this.post = (await PostService.show(postId)).data
   }
 }
 </script>

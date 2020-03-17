@@ -8,7 +8,6 @@
     <RouterLink :to="{ name: 'productView' }">
       <h2>my product</h2>
     </RouterLink>
-    <h2>my history</h2>
   </div>
   <div>
     <router-view></router-view>

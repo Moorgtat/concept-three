@@ -35,7 +35,7 @@ export default {
     async createPost () {
       try {
         await PostService.post(this.post)
-        await this.$router.push('/')
+        await this.$router.push('/postview')
       } catch (error) {
         this.error = error.response.data.error
       }

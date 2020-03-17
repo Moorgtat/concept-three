@@ -45,7 +45,7 @@ export default {
     async createProduct () {
       try {
         await ProductService.post(this.product)
-        await this.$router.push('/shop')
+        await this.$router.push('/productview')
       } catch (error) {
         this.error = error.response.data.error
       }

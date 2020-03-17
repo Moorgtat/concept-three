@@ -5,6 +5,7 @@
       </RouterLink>
       <div class="post-container">
         <div class="post" v-for="post in posts" :key="post.id">
+          <div class="post-id">{{ post.id }}</div>
           <div class="post-title">{{ post.title }}</div>
           <div class="post-article">{{ post.article }}</div>
           <div class="post-imageUrl">{{ post.imageUrl }}</div>

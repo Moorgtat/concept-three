@@ -50,11 +50,7 @@ module.exports = {
   async delete (req, res) {
   try {
     const { postId } = req.query
-    const post = await Post.findOne({
-      where: {
-        PostId: postId
-      }
-    })
+    const post = await Post.findByPk(postId)
     await post.destroy()
     res.send(post)
   } catch (error) {
