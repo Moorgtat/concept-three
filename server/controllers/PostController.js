@@ -3,13 +3,23 @@ const {Post} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
-        posts = await Post.findAll({
+        const posts = await Post.findAll({
           limit: 100
         })
       res.send(posts)
     } catch (err) {
       res.status(500).send({
         error: 'fetching posts error'
+      })
+    }
+  },
+  async show (req, res) {
+    try {
+      const post = await Post.findByPk(req.params.postId)
+      res.send(post)
+    } catch (err) {
+      res.status(500).send({
+        error: 'fetching post error'
       })
     }
   },
@@ -36,5 +46,21 @@ module.exports = {
         error: 'Error editing the post'
       })
     }
+  },
+  async delete (req, res) {
+  try {
+    const { postId } = req.query
+    const post = await Post.findOne({
+      where: {
+        PostId: postId
+      }
+    })
+    await post.destroy()
+    res.send(post)
+  } catch (error) {
+    res.status(500).send({
+      error: 'Error deleting post'
+    })
   }
+}
 }

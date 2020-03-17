@@ -1,5 +1,5 @@
-const PostsController = require('../controllers/PostsController')
-const ProductsController = require('../controllers/ProductsController')
+const PostController = require('../controllers/PostController')
+const ProductController = require('../controllers/ProductController')
 const AuthenticationController = require('../controllers/AuthenticationController')
 
 module.exports = (app) => {
@@ -9,19 +9,27 @@ module.exports = (app) => {
   app.post('/login',
     AuthenticationController.login)
 
-  app.get('/posts',
-    PostsController.index)
-  app.post('/posts',
-    PostsController.post)
-  app.put('/posts/:postId',
-    PostsController.put)
+  app.get('/post',
+    PostController.index)
+  app.get('/post/:postId',
+    PostController.show)
+  app.post('/post',
+    PostController.post)
+  app.put('/post/:postId',
+    PostController.put)
+  app.delete('/post',
+    PostController.delete)
 
-  app.get('/products',
-    ProductsController.index)
-  app.post('/products',
-    ProductsController.post)
-  app.put('/products/:productId',
-    ProductsController.put)
+  app.get('/product',
+    ProductController.index)
+  app.get('/product/:productId',
+    ProductController.show)
+  app.post('/product',
+    ProductController.post)
+  app.put('/product/:productId',
+    ProductController.put)
+  app.delete('/product',
+    ProductController.delete)
 
   app.get('/', (req, res) =>{
     res.send ('Hello World')
