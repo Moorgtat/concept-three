@@ -31,7 +31,9 @@ module.exports = (app) => {
   app.delete('/product',
     ProductController.delete)
 
-  app.get('/', (req, res) =>{
-    res.send ('Hello World')
+  app.get('/', (req, res) => {
+    res.send('Hello World!')
+    console.log('Basic')
   })
+
 }

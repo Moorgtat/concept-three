@@ -3,7 +3,9 @@ const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 const config = require('./config/config')
-const {sequelize} = require('./models')
+const { sequelize } = require('./models')
+
+const multer = require('multer')
 
 const app = express()
 
@@ -14,6 +16,13 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 require('./routes/routes')(app)
+
+const upload = multer({
+  dest:'./uploads/'
+})
+app.post('/upload', upload.single('file'), (req, res) => {
+ res.json({ file: req.file })
+})
 
 sequelize.sync()
   .then(() => {
