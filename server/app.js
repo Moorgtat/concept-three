@@ -6,6 +6,26 @@ const config = require('./config/config')
 const { sequelize } = require('./models')
 
 const multer = require('multer')
+const jimp = require('jimp')
+const uuid = require('uuid')
+const multerOptions = {
+  storage: multer.memoryStorage(),
+  fileFilter(req, file, next) {
+    const isPhoto = file.mimetype.startsWith('image/')
+    if(isPhoto) {
+      next(null, true)
+    } else {
+      next({message: 'Wrong filetype'}, false)
+    }
+  }
+}
+const upload = multer(multerOptions).single('photo')
+const resize = async (req, res, next) => {
+  if( !req.file) {
+    next()
+  }
+  console.log(req.file)
+}
 
 const app = express()
 
@@ -17,12 +37,7 @@ app.use(cookieParser())
 
 require('./routes/routes')(app)
 
-const upload = multer({
-  dest:'./uploads/'
-})
-app.post('/upload', upload.single('file'), (req, res) => {
- res.json({ file: req.file })
-})
+app.post('/upload', upload, resize)
 
 sequelize.sync()
   .then(() => {
