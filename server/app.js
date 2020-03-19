@@ -25,6 +25,12 @@ const resize = async (req, res, next) => {
     next()
   }
   console.log(req.file)
+  const extension = req.file.mimetype.split('/')[1];
+  req.body.photo = `${uuid.v4()}.${extension}`
+  const photo = await jimp.read(req.file.buffer)
+  await photo.resize(300, jimp.AUTO)
+  await photo.write(`./uploads/${req.body.photo}`)
+  next()
 }
 
 const app = express()

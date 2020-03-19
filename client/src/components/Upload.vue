@@ -4,6 +4,9 @@
         <input
           type="file"
           ref="file"
+          name="photo"
+          id="photo"
+          accept="image/jpeg"
           @change="selectFile"/>
         <button type="submit">Submit</button>
       </form>
@@ -25,7 +28,7 @@ export default {
     },
     async sendFile () {
       const formData = new FormData()
-      formData.append('file', this.file)
+      formData.append('photo', this.file)
       try {
         await axios.post('http://localhost:3005/upload', formData)
       } catch (error) {
