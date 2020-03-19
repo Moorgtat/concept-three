@@ -27,10 +27,27 @@ const resize = async (req, res, next) => {
   console.log(req.file)
   const extension = req.file.mimetype.split('/')[1];
   req.body.photo = `${uuid.v4()}.${extension}`
+  console.log(req.body)
   const photo = await jimp.read(req.file.buffer)
   await photo.resize(300, jimp.AUTO)
-  await photo.write(`./uploads/${req.body.photo}`)
+  await photo.write(`../client/public/${req.body.photo}`)
   next()
+}
+const {Upfile} = require('./models')
+const upfilePost = async (req, res) => {
+  const upfile = {
+    title: req.body.title,
+    article: req.body.article,
+    photo: req.body.photo
+  }
+  try {
+    await Upfile.create(upfile)
+    res.send(product)
+  } catch (error) {
+    res.status(500).send({
+      error: 'Post upfile error'
+    })
+  }
 }
 
 const app = express()
@@ -43,7 +60,7 @@ app.use(cookieParser())
 
 require('./routes/routes')(app)
 
-app.post('/upload', upload, resize)
+app.post('/upload', upload, resize, upfilePost)
 
 sequelize.sync()
   .then(() => {
