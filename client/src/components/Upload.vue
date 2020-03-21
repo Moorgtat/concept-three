@@ -12,6 +12,11 @@
           @change="selectFile"/>
         <button type="submit">Submit</button>
       </form>
+      <div v-for="upfile in upfiles" :key="upfile.id">
+        <p>{{ upfile.title }}</p>
+        <p>{{ upfile.article }}</p>
+        <img :src='upfile.photo'/>
+      </div>
     </div>
 </template>
 
@@ -21,6 +26,7 @@ export default {
   name: 'Upload',
   data () {
     return {
+      upfiles: [],
       title: null,
       article: null,
       file: null
@@ -41,6 +47,9 @@ export default {
         window.console.log(error)
       }
     }
+  },
+  async mounted () {
+    this.upfiles = (await axios.get('http://localhost:3005/upload')).data
   }
 }
 </script>

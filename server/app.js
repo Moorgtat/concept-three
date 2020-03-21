@@ -61,6 +61,18 @@ app.use(cookieParser())
 require('./routes/routes')(app)
 
 app.post('/upload', upload, resize, upfilePost)
+app.get('/upload', async (req, res) => {
+  try {
+    const upfiles = await Upfile.findAll({
+      limit: 100
+    })
+    res.send(upfiles)
+  } catch (err) {
+    res.status(500).send({
+      error: 'fetching upfiles error'
+    })
+  }
+})
 
 sequelize.sync()
   .then(() => {
