@@ -4,7 +4,6 @@ const morgan = require('morgan')
 const cors = require('cors')
 const config = require('./config/config')
 const { sequelize } = require('./models')
-
 const multer = require('multer')
 const jimp = require('jimp')
 const uuid = require('uuid')
@@ -19,22 +18,33 @@ const multerOptions = {
     }
   }
 }
+
+const app = express()
+
+app.use(morgan('combine'))
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+
+require('./routes/routes')(app)
+
+
 const upload = multer(multerOptions).single('photo')
 const resize = async (req, res, next) => {
   if( !req.file) {
     next()
   }
-  console.log(req.file)
   const extension = req.file.mimetype.split('/')[1];
   req.body.photo = `${uuid.v4()}.${extension}`
-  console.log(req.body)
   const photo = await jimp.read(req.file.buffer)
   await photo.resize(300, jimp.AUTO)
   await photo.write(`../client/public/${req.body.photo}`)
   next()
 }
 const {Upfile} = require('./models')
-const upfilePost = async (req, res) => {
+
+app.post('/upload', upload, resize, async (req, res) => {
   const upfile = {
     title: req.body.title,
     article: req.body.article,
@@ -48,19 +58,8 @@ const upfilePost = async (req, res) => {
       error: 'Post upfile error'
     })
   }
-}
+})
 
-const app = express()
-
-app.use(morgan('combine'))
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
-
-require('./routes/routes')(app)
-
-app.post('/upload', upload, resize, upfilePost)
 app.get('/upload', async (req, res) => {
   try {
     const upfiles = await Upfile.findAll({
