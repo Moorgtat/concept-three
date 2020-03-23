@@ -1,4 +1,5 @@
 const {Post} = require('../models')
+const fs = require('fs')
 
 module.exports = {
   async index (req, res) {
@@ -24,8 +25,13 @@ module.exports = {
     }
   },
   async post (req, res) {
+    const post = {
+      title: req.body.title,
+      article: req.body.article,
+      imageUrl: req.body.imageUrl
+    }
     try {
-      const post = await Post.create(req.body)
+      await Post.create(post)
       res.send(post)
     } catch (err) {
       res.status(500).send({
@@ -50,7 +56,9 @@ module.exports = {
   async delete (req, res) {
   try {
     const { postId } = req.query
+    const path = '../client/public/'
     const post = await Post.findByPk(postId)
+    fs.unlinkSync(path + post.imageUrl)
     await post.destroy()
     res.send(post)
   } catch (error) {

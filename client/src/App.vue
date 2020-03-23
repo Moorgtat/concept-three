@@ -3,7 +3,6 @@
     <div id="nav">
       <router-link to="/">home</router-link>
       <router-link to="/shop"> | shop</router-link>
-      <router-link to="/upload"> | upload</router-link>
       <router-link v-if="this.$store.state.isUserLoggedIn && !this.$store.state.isAdminLoggedIn" to="/userboard"> | userboard</router-link>
       <router-link v-if="this.$store.state.isAdminLoggedIn" to="/admin"> | admin</router-link>
       <router-link v-if="!this.$store.state.isUserLoggedIn" to="/login"> | login</router-link>

@@ -13,7 +13,6 @@ import productEdit from '@/components/admin/productEdit'
 import postView from '@/components/admin/postView'
 import productView from '@/components/admin/productView'
 import store from '../store/index'
-import Upload from '@/components/Upload'
 
 Vue.use(VueRouter)
 
@@ -22,11 +21,6 @@ const routes = [
     path: '/',
     name: 'blog',
     component: blog
-  },
-  {
-    path: '/upload',
-    name: 'upload',
-    component: Upload
   },
   {
     path: '/userboard',
