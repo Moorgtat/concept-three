@@ -4,6 +4,8 @@ const morgan = require('morgan')
 const cors = require('cors')
 const config = require('./config/config')
 const { sequelize } = require('./models')
+
+const fs = require('fs')
 const multer = require('multer')
 const jimp = require('jimp')
 const uuid = require('uuid')
@@ -29,8 +31,9 @@ app.use(cookieParser())
 
 require('./routes/routes')(app)
 
-
+const {Upfile} = require('./models')
 const upload = multer(multerOptions).single('photo')
+
 const resize = async (req, res, next) => {
   if( !req.file) {
     next()
@@ -42,7 +45,19 @@ const resize = async (req, res, next) => {
   await photo.write(`../client/public/${req.body.photo}`)
   next()
 }
-const {Upfile} = require('./models')
+
+app.get('/upload', async (req, res) => {
+  try {
+    const upfiles = await Upfile.findAll({
+      limit: 100
+    })
+    res.send(upfiles)
+  } catch (err) {
+    res.status(500).send({
+      error: 'fetching upfiles error'
+    })
+  }
+})
 
 app.post('/upload', upload, resize, async (req, res) => {
   const upfile = {
@@ -60,15 +75,18 @@ app.post('/upload', upload, resize, async (req, res) => {
   }
 })
 
-app.get('/upload', async (req, res) => {
+app.post('/delupload', async (req, res) => {
   try {
-    const upfiles = await Upfile.findAll({
-      limit: 100
-    })
-    res.send(upfiles)
-  } catch (err) {
+    console.log(req.body)
+    const deluploadId = req.body.id
+    const path = '../client/public/'
+    const upfile = await Upfile.findByPk(deluploadId)
+    fs.unlinkSync(path + upfile.photo)
+    await upfile.destroy()
+    res.send(upfile)
+  } catch (error) {
     res.status(500).send({
-      error: 'fetching upfiles error'
+      error: 'Delete upfile error'
     })
   }
 })

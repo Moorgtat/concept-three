@@ -35,7 +35,7 @@
           <input type="file"/>
           <div><button type="submit">Edit</button></div>
           </form>
-          <div><button @click="deleteFile">Delete</button></div>
+          <div><button @click="deleteFile(upfile.id)">Delete</button></div>
         </div>
       </div>
     </div>
@@ -50,6 +50,7 @@ export default {
     return {
       upfiles: [],
       upfile: {
+        id: null,
         title: null,
         article: null,
         file: null
@@ -73,7 +74,14 @@ export default {
     },
     async editFile () {
     },
-    async deleteFile () {
+    async deleteFile (upfileId) {
+      const delupload = { id: upfileId }
+      try {
+        await axios.post('http://localhost:3005/delupload', delupload)
+        await this.$router.push('/')
+      } catch (error) {
+        window.console.log(error)
+      }
     }
   },
   async mounted () {
@@ -104,7 +112,8 @@ export default {
 }
 /*Divers*/
 input{
-  margin: 5px;
+  width: 80%;
+  margin-bottom: 10px;
 }
 img{
  width: 50%;
