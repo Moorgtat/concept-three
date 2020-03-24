@@ -16,7 +16,7 @@
       <br>
       <div v-html="error"></div>
       <button  @click="editPost">Edit</button>
-      <button  @click="deletePost">Delete</button>
+      <button  @click="deletePost(post.id)">Delete</button>
     </div>
 </template>
 
@@ -45,12 +45,11 @@ export default {
         this.error = error.response.data.error
       }
     },
-    async deletePost () {
+    async deletePost (postId) {
+      const delpost = { id: postId }
       try {
-        await PostService.delete({
-          postId: this.post.id
-        })
-        await this.$router.push('/postview')
+        await PostService.delete(delpost)
+        await this.$router.push('/')
       } catch (error) {
         window.console.log(error)
       }

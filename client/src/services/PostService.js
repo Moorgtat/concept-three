@@ -13,7 +13,7 @@ export default {
   put (post) {
     return Api().put(`post/${post.id}`, post)
   },
-  delete (post) {
-    return Api().delete('post', { params: post })
+  delete (delpost) {
+    return Api().post('deletepost', delpost)
   }
 }

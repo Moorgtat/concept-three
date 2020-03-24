@@ -55,9 +55,8 @@ module.exports = {
   },
   async delete (req, res) {
   try {
-    const { postId } = req.query
     const path = '../client/public/'
-    const post = await Post.findByPk(postId)
+    const post = await Post.findByPk(req.body.id)
     fs.unlinkSync(path + post.imageUrl)
     await post.destroy()
     res.send(post)
