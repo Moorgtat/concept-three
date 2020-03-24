@@ -2,6 +2,18 @@ const PostController = require('../controllers/PostController')
 const ProductController = require('../controllers/ProductController')
 const AuthenticationController = require('../controllers/AuthenticationController')
 const UploadController = require('../controllers/UploadController')
+const multer = require('multer')
+const multerOptions = {
+  storage: multer.memoryStorage(),
+  fileFilter(req, file, next) {
+    const isPhoto = file.mimetype.startsWith('image/')
+    if(isPhoto) {
+      next(null, true)
+    } else {
+      next({message: 'Wrong filetype'}, false)
+    }
+  }
+}
 
 module.exports = (app) => {
 
@@ -9,12 +21,13 @@ module.exports = (app) => {
     AuthenticationController.register)
   app.post('/login',
     AuthenticationController.login)
+
   app.get('/post',
     PostController.index)
   app.get('/post/:postId',
     PostController.show)
   app.post('/post',
-    UploadController.upload,
+    multer(multerOptions).single('photo'),
     UploadController.resize,
     PostController.post)
   app.put('/post/:postId',

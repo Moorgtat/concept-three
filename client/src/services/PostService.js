@@ -7,8 +7,8 @@ export default {
   show (postId) {
     return Api().get(`post/${postId}`)
   },
-  post (post) {
-    return Api().post('post', post)
+  post (formData) {
+    return Api().post('post', formData)
   },
   put (post) {
     return Api().put(`post/${post.id}`, post)

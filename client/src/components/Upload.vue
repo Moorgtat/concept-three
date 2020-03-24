@@ -1,17 +1,17 @@
 <template>
   <div class="upload">
-    <form @submit.prevent="sendFile" enctype="multipart/form-data">
-      <input type="text" name="title" v-model="upfile.title" placeholder="title"/>
-      <input type="text" name="article" v-model="upfile.article" placeholder="article"/>
-      <input
-        type="file"
-        ref="file"
-        name="photo"
-        id="photo"
-        accept="image/jpeg"
-        @change="selectFile"/>
-      <button type="submit">Create</button>
-    </form>
+<!--    <form @submit.prevent="sendFile" enctype="multipart/form-data">-->
+<!--      <input type="text" name="title" v-model="upfile.title" placeholder="title"/>-->
+<!--      <input type="text" name="article" v-model="upfile.article" placeholder="article"/>-->
+<!--      <input-->
+<!--        type="file"-->
+<!--        ref="file"-->
+<!--        name="photo"-->
+<!--        id="photo"-->
+<!--        accept="image/jpeg"-->
+<!--        @change="selectFile"/>-->
+<!--      <button type="submit">Create</button>-->
+<!--    </form>-->
     <div class="Files-container">
       <div class="test-container">
         <h1> All Upfiles </h1>
@@ -58,9 +58,9 @@ export default {
     }
   },
   methods: {
-    selectFile () {
-      this.file = this.$refs.file.files[0]
-    },
+    // selectFile () {
+    //   this.file = this.$refs.file.files[0]
+    // },
     async sendFile () {
       const formData = new FormData()
       formData.append('photo', this.file)
