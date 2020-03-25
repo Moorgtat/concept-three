@@ -8,7 +8,8 @@
           <div class="post-id">{{ post.id }}</div>
           <div class="post-title">{{ post.title }}</div>
           <div class="post-article">{{ post.article }}</div>
-          <div class="post-imageUrl">{{ post.imageUrl }}</div>
+          <img :src="post.imageUrl" class="post-imageUrl"/>
+          <br>
           <RouterLink :to="{ name: 'postEdit', params: {postId: post.id} }">
             <button>Edit</button>
           </RouterLink>
@@ -33,5 +34,7 @@ export default {
 </script>
 
 <style scoped>
-
+.post-imageUrl{
+  width: 50%;
+}
 </style>

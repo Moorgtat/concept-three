@@ -5,7 +5,9 @@
     <div class="post" v-for="post in posts" :key="post.id">
       <div class="post-title">{{ post.title }}</div>
       <div class="post-article">{{ post.article }}</div>
-      <div class="post-imageUrl">{{ post.imageUrl }}</div>
+      <div>
+        <img :src=(post.imageUrl) class="post-imageUrl"/>
+      </div>
     </div>
   </div>
 </div>
@@ -48,6 +50,6 @@ export default {
     font-size: 14px;
   }
   .post-imageUrl {
-    font-size: 9px;
+    width: 50%;
   }
 </style>

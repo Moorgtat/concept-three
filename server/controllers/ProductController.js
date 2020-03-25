@@ -1,4 +1,5 @@
 const {Product} = require('../models')
+const fs = require('fs')
 
 module.exports = {
   async index (req, res) {
@@ -24,8 +25,15 @@ module.exports = {
     }
   },
   async post (req, res) {
+    const product = {
+      title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      quantity: req.body.quantity,
+      imageUrl: req.body.imageUrl
+    }
     try {
-      const product = await Product.create(req.body)
+      const product = await Product.create(product)
       res.send(product)
     } catch (err) {
       res.status(500).send({
@@ -49,8 +57,9 @@ module.exports = {
   },
   async delete (req, res) {
     try {
-      const { productId } = req.query
-      const product = await Product.findByPk(productId)
+      // const path = '../client/public/'
+      const product = await Product.findByPk(req.body.id)
+      // fs.unlinkSync(path + product.imageUrl)
       await product.destroy()
       res.send(product)
     } catch (error) {

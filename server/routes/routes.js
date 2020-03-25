@@ -40,10 +40,12 @@ module.exports = (app) => {
   app.get('/product/:productId',
     ProductController.show)
   app.post('/product',
+    multer(multerOptions).single('photo'),
+    UploadController.resize,
     ProductController.post)
   app.put('/product/:productId',
     ProductController.put)
-  app.delete('/product',
+  app.post('/deleteproduct',
     ProductController.delete)
 
   app.get('/', (req, res) => {
