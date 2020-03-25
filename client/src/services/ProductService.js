@@ -7,13 +7,13 @@ export default {
   show (productId) {
     return Api().get(`product/${productId}`)
   },
-  post (product) {
-    return Api().post('product', product)
+  post (formData) {
+    return Api().post('product', formData)
   },
   put (product) {
     return Api().put(`product/${product.id}`, product)
   },
-  delete (product) {
-    return Api().delete('product', { params: product })
+  delete (delproduct) {
+    return Api().post('deleteproduct', delproduct)
   }
 }

@@ -24,7 +24,7 @@
       <br>
       <div v-html="error"></div>
       <button  @click="editProduct">Edit</button>
-      <button  @click="deleteProduct">Delete</button>
+      <button  @click="deleteProduct(product.id)">Delete</button>
     </div>
 </template>
 
@@ -55,11 +55,10 @@ export default {
         this.error = error.response.data.error
       }
     },
-    async deleteProduct () {
+    async deleteProduct (productId) {
+      const delproduct = { id: productId }
       try {
-        await ProductService.delete({
-          productId: this.product.id
-        })
+        await ProductService.delete(delproduct)
         await this.$router.push('/productview')
       } catch (error) {
         window.console.log(error)
