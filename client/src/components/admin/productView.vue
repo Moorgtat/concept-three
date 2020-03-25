@@ -8,6 +8,8 @@
           <div class="product-title">{{ product.title }}</div>
           <div class="product-description">{{ product.description }}</div>
           <div class="product-price">{{ product.price }}</div>
+          <img :src="product.imageUrl" alt="image produit"/>
+          <br>
           <RouterLink :to="{ name: 'productEdit', params: {productId: product.id} }">
             <button>Edit</button>
           </RouterLink>
