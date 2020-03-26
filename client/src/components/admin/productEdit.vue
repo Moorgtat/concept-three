@@ -23,8 +23,8 @@
       </label>
       <br>
       <div v-html="error"></div>
-      <button  @click="editProduct">Edit</button>
-      <button  @click="deleteProduct(product.id)">Delete</button>
+      <button class="btn-one" @click="editProduct">Edit</button>
+      <button class="btn-one" @click="deleteProduct(product.id)">Delete</button>
     </div>
 </template>
 

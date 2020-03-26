@@ -1,5 +1,5 @@
 <template>
-<div class="postadd">
+<div>
   <form @submit.prevent="createPost" enctype="multipart/form-data">
     <label>
     <input type="text" name="title" v-model="post.title" placeholder="title"/>
@@ -14,7 +14,7 @@
       id="photo"
       accept="image/jpeg"
       @change="selectFile"/>
-    <button type="submit">Create</button>
+    <button class="btn-one">Create</button>
   </form>
   <div v-html="error"></div>
 </div>
@@ -27,8 +27,8 @@ export default {
   data () {
     return {
       error: null,
+      file: null,
       post: {
-        file: null,
         title: null,
         article: null
       }
@@ -38,13 +38,14 @@ export default {
     selectFile () {
       this.file = this.$refs.file.files[0]
     },
-    async createPost () {
+    createPost () {
       const formData = new FormData()
       formData.append('photo', this.file)
       formData.append('title', this.post.title)
       formData.append('article', this.post.article)
       try {
-        await PostService.post(formData)
+        PostService.post(formData)
+        this.$router.push('/postview')
       } catch (error) {
         this.error = error.response.data.error
       }

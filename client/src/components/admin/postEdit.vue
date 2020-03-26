@@ -15,8 +15,8 @@
       </label>
       <br>
       <div v-html="error"></div>
-      <button  @click="editPost">Edit</button>
-      <button  @click="deletePost(post.id)">Delete</button>
+      <button class="btn-one" @click="editPost">Edit</button>
+      <button class="btn-one" @click="deletePost(post.id)">Delete</button>
     </div>
 </template>
 

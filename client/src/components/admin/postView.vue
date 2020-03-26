@@ -1,7 +1,7 @@
 <template>
     <div class="post-view">
       <RouterLink :to="{ name: 'postAdd' }">
-        <button>Add Post</button>
+        <button class="btn-one">Add Post</button>
       </RouterLink>
       <div class="post-container">
         <div class="post" v-for="post in posts" :key="post.id">
@@ -11,7 +11,7 @@
           <img :src="post.imageUrl" class="post-imageUrl"/>
           <br>
           <RouterLink :to="{ name: 'postEdit', params: {postId: post.id} }">
-            <button>Edit</button>
+            <button class="btn-one">Edit</button>
           </RouterLink>
         </div>
       </div>

@@ -21,7 +21,7 @@
         id="photo"
         accept="image/jpeg"
         @change="selectFile"/>
-      <button type="submit">Create</button>
+      <button class="btn-one">Create</button>
     </form>
     <div v-html="error"></div>
   </div>
@@ -34,8 +34,8 @@ export default {
   data () {
     return {
       error: null,
+      file: null,
       product: {
-        file: null,
         title: null,
         description: null,
         price: null,
@@ -47,7 +47,7 @@ export default {
     selectFile () {
       this.file = this.$refs.file.files[0]
     },
-    async createProduct () {
+    createProduct () {
       const formData = new FormData()
       formData.append('photo', this.file)
       formData.append('title', this.product.title)
@@ -55,8 +55,8 @@ export default {
       formData.append('price', this.product.price)
       formData.append('quantity', this.product.quantity)
       try {
-        await ProductService.post(formData)
-        // await this.$router.push('/productview')
+        ProductService.post(formData)
+        this.$router.push('/productview')
       } catch (error) {
         this.error = error.response.data.error
       }
