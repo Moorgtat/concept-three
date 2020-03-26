@@ -28,12 +28,13 @@ module.exports = {
     const product = {
       title: req.body.title,
       description: req.body.description,
-      price: req.body.price,
-      quantity: req.body.quantity,
+      price: parseInt(req.body.price),
+      quantity: parseInt(req.body.quantity),
       imageUrl: req.body.imageUrl
     }
+    console.log(product)
     try {
-      const product = await Product.create(product)
+      await Product.create(product)
       res.send(product)
     } catch (err) {
       res.status(500).send({

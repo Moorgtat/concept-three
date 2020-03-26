@@ -3,11 +3,11 @@
   <h1>Home</h1>
   <div class="post-container">
     <div class="post" v-for="post in posts" :key="post.id">
-      <div class="post-title">{{ post.title }}</div>
-      <div class="post-article">{{ post.article }}</div>
       <div>
         <img :src=(post.imageUrl) class="post-imageUrl"/>
       </div>
+      <div class="post-title">{{ post.title }}</div>
+      <div class="post-article">{{ post.article }}</div>
     </div>
   </div>
 </div>

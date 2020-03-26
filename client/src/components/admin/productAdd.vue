@@ -9,10 +9,10 @@
         <input type="text" name="description" v-model="product.description" placeholder="description"/>
       </label>
       <label>
-        <input type="text" name="price" v-model="product.price" placeholder="price"/>
+        <input type="number" name="price" v-model="product.price" placeholder="price"/>
       </label>
       <label>
-        <input type="text" name="quantity" v-model="product.quantity" placeholder="quantity"/>
+        <input type="number" name="quantity" v-model="product.quantity" placeholder="quantity"/>
       </label>
       <input
         type="file"
@@ -51,12 +51,12 @@ export default {
       const formData = new FormData()
       formData.append('photo', this.file)
       formData.append('title', this.product.title)
-      formData.append('description', this.product.article)
+      formData.append('description', this.product.description)
       formData.append('price', this.product.price)
       formData.append('quantity', this.product.quantity)
       try {
         await ProductService.post(formData)
-        await this.$router.push('/productview')
+        // await this.$router.push('/productview')
       } catch (error) {
         this.error = error.response.data.error
       }
