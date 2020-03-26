@@ -45,7 +45,6 @@ export default {
       formData.append('article', this.post.article)
       try {
         await PostService.post(formData)
-        await this.$router.push('/postview')
       } catch (error) {
         this.error = error.response.data.error
       }

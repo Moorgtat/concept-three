@@ -49,7 +49,7 @@ export default {
       const delpost = { id: postId }
       try {
         await PostService.delete(delpost)
-        await this.$router.push('/')
+        await this.$router.push('/postview')
       } catch (error) {
         window.console.log(error)
       }
