@@ -40,13 +40,21 @@ module.exports = {
     }
   },
   async put (req, res) {
+    const post = await Post.findByPk(req.body.id)
+    const path = '../client/public/'
+    fs.unlinkSync(path + post.imageUrl)
+    const updPost = {
+      title: req.body.title,
+      article: req.body.article,
+      imageUrl: req.body.imageUrl
+    }
     try {
-      await Post.update(req.body, {
+      await Post.update(updPost, {
         where: {
-          id: req.params.postId
+          id: req.body.id
         }
       })
-      res.send(' Post updated')
+      res.send('Post updated')
     } catch (err) {
       res.status(500).send({
         error: 'Error editing the post'

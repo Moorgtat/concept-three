@@ -1,21 +1,23 @@
 <template>
     <div class="post-edit">
       <h1>Edit Post</h1>
-      <br>
-      <label>
-        <input type="text" name="title" v-model="post.title" placeholder="title"/>
-      </label>
-      <br>
-      <label>
-        <input type="text" name="title" v-model="post.article" placeholder="article"/>
-      </label>
-      <br>
-      <label>
-        <input type="text" name="title" v-model="post.imageUrl" placeholder="imageurl"/>
-      </label>
-      <br>
+      <form @submit.prevent="editPost" enctype="multipart/form-data">
+        <label>
+          <input type="text" name="title" v-model="post.title" placeholder="title"/>
+        </label>
+        <label>
+          <input type="text" name="article" v-model="post.article" placeholder="article"/>
+        </label>
+        <input
+          type="file"
+          ref="file"
+          name="photo"
+          id="photo"
+          accept="image/jpeg"
+          @change="selectFile"/>
+        <button class="btn-one">Edit</button>
+      </form>
       <div v-html="error"></div>
-      <button class="btn-one" @click="editPost">Edit</button>
       <button class="btn-one" @click="deletePost(post.id)">Delete</button>
     </div>
 </template>
@@ -27,20 +29,27 @@ export default {
   data () {
     return {
       error: null,
+      file: null,
       post: {
+        id: null,
         title: null,
-        article: null,
-        imageUrl: null
+        article: null
       }
     }
   },
   methods: {
-    async editPost () {
+    selectFile () {
+      this.file = this.$refs.file.files[0]
+    },
+    editPost () {
+      const formData = new FormData()
+      formData.append('photo', this.file)
+      formData.append('id', this.post.id)
+      formData.append('title', this.post.title)
+      formData.append('article', this.post.article)
       try {
-        await PostService.put(this.post)
-        await this.$router.push({
-          name: 'postView'
-        })
+        PostService.put(formData)
+        this.$router.push('/postview')
       } catch (error) {
         this.error = error.response.data.error
       }

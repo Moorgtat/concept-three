@@ -30,7 +30,9 @@ module.exports = (app) => {
     multer(multerOptions).single('photo'),
     UploadController.resize,
     PostController.post)
-  app.put('/post/:postId',
+  app.put('/post',
+    multer(multerOptions).single('photo'),
+    UploadController.resize,
     PostController.put)
   app.post('/deletepost',
     PostController.delete)

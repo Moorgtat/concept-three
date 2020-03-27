@@ -10,8 +10,8 @@ export default {
   post (formData) {
     return Api().post('post', formData)
   },
-  put (post) {
-    return Api().put(`post/${post.id}`, post)
+  put (formData) {
+    return Api().put('post', formData)
   },
   delete (delpost) {
     return Api().post('deletepost', delpost)
