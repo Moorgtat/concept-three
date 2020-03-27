@@ -45,7 +45,9 @@ module.exports = (app) => {
     multer(multerOptions).single('photo'),
     UploadController.resize,
     ProductController.post)
-  app.put('/product/:productId',
+  app.put('/product',
+    multer(multerOptions).single('photo'),
+    UploadController.resize,
     ProductController.put)
   app.post('/deleteproduct',
     ProductController.delete)

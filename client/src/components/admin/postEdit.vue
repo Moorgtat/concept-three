@@ -5,9 +5,11 @@
         <label>
           <input type="text" name="title" v-model="post.title" placeholder="title"/>
         </label>
+        <br>
         <label>
           <input type="text" name="article" v-model="post.article" placeholder="article"/>
         </label>
+        <br>
         <input
           type="file"
           ref="file"
@@ -15,10 +17,11 @@
           id="photo"
           accept="image/jpeg"
           @change="selectFile"/>
+        <br>
         <button class="btn-one">Edit</button>
+        <button type="button" class="btn-one" @click="deletePost(post.id)">Delete</button>
       </form>
       <div v-html="error"></div>
-      <button class="btn-one" @click="deletePost(post.id)">Delete</button>
     </div>
 </template>
 

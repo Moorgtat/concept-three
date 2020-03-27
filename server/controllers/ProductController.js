@@ -43,10 +43,18 @@ module.exports = {
     }
   },
   async put (req, res) {
+    const product = await Product.findByPk(req.body.id)
+    const path = '../client/public/'
+    fs.unlinkSync(path + product.imageUrl)
+    const updProduct = {
+      title: req.body.title,
+      article: req.body.article,
+      imageUrl: req.body.imageUrl
+    }
     try {
-      await Product.update(req.body, {
+      await Product.update(updProduct, {
         where: {
-          id: req.params.productId
+          id: req.body.id
         }
       })
       res.send(' Product updated')
