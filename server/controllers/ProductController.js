@@ -66,9 +66,9 @@ module.exports = {
   },
   async delete (req, res) {
     try {
-      // const path = '../client/public/'
+      const path = '../client/public/'
       const product = await Product.findByPk(req.body.id)
-      // fs.unlinkSync(path + product.imageUrl)
+      fs.unlinkSync(path + product.imageUrl)
       await product.destroy()
       res.send(product)
     } catch (error) {

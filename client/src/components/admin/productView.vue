@@ -1,5 +1,6 @@
 <template>
     <div class="product-view">
+      <h1>Products</h1>
       <RouterLink :to="{ name: 'productAdd' }">
         <button class="btn-one">Add Product</button>
       </RouterLink>
@@ -8,7 +9,8 @@
           <div class="product-title">{{ product.title }}</div>
           <div class="product-description">{{ product.description }}</div>
           <div class="product-price">{{ product.price }}</div>
-          <img class="product-image" :src="product.imageUrl" alt="image produit"/>
+          <div class="product-quantity">{{ product.quantity }}</div>
+          <img :src="product.imageUrl" alt="image produit"/>
           <br>
           <RouterLink :to="{ name: 'productEdit', params: {productId: product.id} }">
             <button class="btn-one">Edit</button>
@@ -34,7 +36,10 @@ export default {
 </script>
 
 <style scoped>
-.product-image {
-  width: 50%;
-}
+  img {
+    width: 20%;
+  }
+  div {
+    margin: 10px;
+  }
 </style>

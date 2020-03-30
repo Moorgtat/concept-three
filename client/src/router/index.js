@@ -12,6 +12,7 @@ import postEdit from '@/components/admin/postEdit'
 import productEdit from '@/components/admin/productEdit'
 import postView from '@/components/admin/postView'
 import productView from '@/components/admin/productView'
+import userView from '@/components/admin/userView'
 import store from '../store/index'
 
 Vue.use(VueRouter)
@@ -69,7 +70,14 @@ const routes = [
         name: 'productEdit',
         component: productEdit,
         meta: { requiresAdminAuth: true }
-      }]
+      },
+      {
+        path: '/userview',
+        name: 'userView',
+        component: userView,
+        meta: { requiresAdminAuth: true }
+      }
+    ]
   },
   {
     path: '/shop',

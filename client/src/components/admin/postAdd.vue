@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h1>Add Posts</h1>
   <form @submit.prevent="createPost" enctype="multipart/form-data">
     <label>
     <input type="text" name="title" v-model="post.title" placeholder="title"/>

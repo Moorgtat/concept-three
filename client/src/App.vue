@@ -7,7 +7,7 @@
       <router-link v-if="this.$store.state.isAdminLoggedIn" to="/admin"> | admin</router-link>
       <router-link v-if="!this.$store.state.isUserLoggedIn" to="/login"> | login</router-link>
       <router-link v-if="!this.$store.state.isUserLoggedIn" to="/register"> | register</router-link>
-      <button id="btn-logout" v-if="this.$store.state.isUserLoggedIn" @click="logout" class="btn-one"><strong>Logout</strong></button>
+      <button id="btn-logout" v-if="this.$store.state.isUserLoggedIn" @click="logout" class="btn-one">Logout</button>
     </div>
     <router-view/>
   </div>
@@ -56,7 +56,8 @@ export default {
 
   .btn-one {
     outline-style: none;
-    font-family: 'Lacquer';
+    font-family: "Oswald", sans-serif;
+    font-weight: bolder;
     height: 40px;
     width: 70px;
     background: white;

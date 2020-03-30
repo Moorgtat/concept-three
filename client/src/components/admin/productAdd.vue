@@ -1,6 +1,6 @@
 <template>
   <div class="productadd">
-
+    <h1>Add Products</h1>
     <form @submit.prevent="createProduct" enctype="multipart/form-data">
       <label>
         <input type="text" name="title" v-model="product.title" placeholder="title"/>

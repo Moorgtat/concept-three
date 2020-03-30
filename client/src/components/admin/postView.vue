@@ -1,14 +1,14 @@
 <template>
     <div class="post-view">
+      <h1>Posts</h1>
       <RouterLink :to="{ name: 'postAdd' }">
         <button class="btn-one">Add Post</button>
       </RouterLink>
       <div class="post-container">
         <div class="post" v-for="post in posts" :key="post.id">
-          <div class="post-id">{{ post.id }}</div>
           <div class="post-title">{{ post.title }}</div>
           <div class="post-article">{{ post.article }}</div>
-          <img :src="post.imageUrl" class="post-imageUrl"/>
+          <img :src="post.imageUrl" alt="image du post"/>
           <br>
           <RouterLink :to="{ name: 'postEdit', params: {postId: post.id} }">
             <button class="btn-one">Edit</button>
@@ -34,7 +34,10 @@ export default {
 </script>
 
 <style scoped>
-.post-imageUrl{
-  width: 50%;
-}
+  img {
+    width: 20%;
+  }
+  div {
+    margin: 10px;
+  }
 </style>

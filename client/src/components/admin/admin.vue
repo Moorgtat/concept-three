@@ -1,13 +1,9 @@
 <template>
 <div>
-  <h1>Admin</h1>
-  <div class="nav">
-    <RouterLink :to="{ name: 'postView' }">
-      <h2>my posts</h2>
-    </RouterLink>
-    <RouterLink :to="{ name: 'productView' }">
-      <h2>my product</h2>
-    </RouterLink>
+  <div id="nav">
+    <RouterLink :to="{ name: 'postView' }">Posts</RouterLink>
+    <RouterLink :to="{ name: 'productView' }"> | Products</RouterLink>
+    <RouterLink :to="{ name: 'userView' }"> | Users</RouterLink>
   </div>
   <div>
     <router-view></router-view>
@@ -22,5 +18,9 @@ export default {
 </script>
 
 <style scoped>
-
+  #nav {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 22px;
+  }
 </style>
