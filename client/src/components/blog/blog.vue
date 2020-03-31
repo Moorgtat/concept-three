@@ -7,7 +7,12 @@
         <img :src=(post.imageUrl) class="post-imageUrl"/>
       </div>
       <div class="post-title">{{ post.title }}</div>
-      <div class="post-article">{{ post.article }}</div>
+      <div class="post-article">
+        {{ post.article }}
+        <router-link to="/post"><span class="more"><strong>more...</strong></span></router-link>
+      </div>
+      <div>
+      </div>
     </div>
   </div>
 </div>
@@ -29,15 +34,24 @@ export default {
 </script>
 
 <style scoped>
+  body {
+    margin: 0;
+  }
   .post-container {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    height: 100vw;
+    max-height: 850px;
   }
   .post {
-    width: 350px;
-    margin: 20px;
+    width: 33%;
+    margin-bottom: 20px;
     flex-direction: column;
     justify-content: center;
   }
@@ -46,5 +60,9 @@ export default {
   }
   .post-article {
     font-size: 14px;
+  }
+  .more {
+    margin-left: 5px;
+    font-size: 20px;
   }
 </style>
