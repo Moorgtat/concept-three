@@ -36,10 +36,8 @@ export default {
     justify-content: center;
   }
   .post {
-    height: 250px;
-    width: 300px;
-    margin: 10px;
-    display: flex;
+    width: 350px;
+    margin: 20px;
     flex-direction: column;
     justify-content: center;
   }
@@ -48,8 +46,5 @@ export default {
   }
   .post-article {
     font-size: 14px;
-  }
-  .post-imageUrl {
-    width: 50%;
   }
 </style>

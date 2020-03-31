@@ -1,13 +1,17 @@
 <template>
 <div>
-  <h1>Shop</h1>
+  <div><h1>Shop</h1></div>
   <div class="product-container">
     <div class="product" v-for="product in products" :key="product.id">
        <div><img class="product-image" :src="product.imageUrl" alt="Image produit"/></div>
       <div class="product-title">{{ product.title }}</div>
-      <div class="product-description">{{ product.description }}</div>
-      <div class="product-price">{{ product.price }}</div>
-      <div class="product-price">{{ product.quantity }}</div>
+      <div class="product-description"><strong>Description : </strong>{{ product.description }}</div>
+      <div class="product-price"><strong>Price : </strong>{{ product.price }}</div>
+      <div class="product-price"><strong>Quantity : </strong>{{ product.quantity }}</div>
+      <div>
+        <button class="btn-one"> More </button>
+        <button class="btn-one"> Add to Cart </button>
+      </div>
     </div>
   </div>
 </div>
@@ -36,15 +40,10 @@ export default {
     justify-content: center;
   }
   .product {
-    height: 250px;
-    width: 300px;
+    width: 350px;
     margin: 20px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  .product-image {
-    width: 50%;
   }
   .product-title {
     font-size: 22px;

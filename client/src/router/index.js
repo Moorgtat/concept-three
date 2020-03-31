@@ -14,6 +14,7 @@ import postView from '@/components/admin/postView'
 import productView from '@/components/admin/productView'
 import userView from '@/components/admin/userView'
 import store from '../store/index'
+import cart from '@/components/shop/cart'
 
 Vue.use(VueRouter)
 
@@ -83,6 +84,11 @@ const routes = [
     path: '/shop',
     name: 'shop',
     component: shop
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: cart
   },
   {
     path: '/login',
