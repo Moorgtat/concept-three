@@ -1,12 +1,12 @@
 <template>
 <div class="blog">
-  <h1>Home</h1>
+  <h1>Hello World!</h1>
   <div class="post-container">
     <div class="post" v-for="post in posts" :key="post.id">
       <div>
         <img :src=(post.imageUrl) class="post-imageUrl"/>
       </div>
-      <div class="post-title">{{ post.title }}</div>
+      <div class="post-title"><strong>{{ post.title }}</strong></div>
       <div class="post-article">
         {{ post.article }}
         <router-link to="/post"><span class="more"><strong>more...</strong></span></router-link>
@@ -43,9 +43,11 @@ export default {
     /*flex-wrap: wrap;*/
     /*align-items: center;*/
     /*justify-content: center;*/
+    margin: 0 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    width: 1130px;
     height: 100vw;
     max-height: 850px;
   }

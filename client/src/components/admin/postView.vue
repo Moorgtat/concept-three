@@ -33,11 +33,23 @@ export default {
 }
 </script>
 
-<style scoped>
-  img {
-    width: 20%;
+<style>
+  .post-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  div {
-    margin: 10px;
+  .post {
+    width: 350px;
+    margin: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .post-title {
+    font-size: 22px;
+  }
+  .post-article {
+    font-size: 14px;
   }
 </style>

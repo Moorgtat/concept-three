@@ -6,7 +6,7 @@
       </RouterLink>
       <div class="product-container">
         <div class="product" v-for="product in products" :key="product.id">
-          <div class="product-title">{{ product.title }}</div>
+          <div class="product-title"><strong>{{ product.title }}</strong></div>
           <div class="product-description">{{ product.description }}</div>
           <div class="product-price">{{ product.price }}</div>
           <div class="product-quantity">{{ product.quantity }}</div>
@@ -35,11 +35,26 @@ export default {
 }
 </script>
 
-<style scoped>
-  img {
-    width: 20%;
+<style>
+  .product-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  div {
-    margin: 10px;
+  .product {
+    width: 350px;
+    margin: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .product-title {
+    font-size: 22px;
+  }
+  .product-description {
+    font-size: 14px;
+  }
+  .product-price {
+    font-size: 9px;
   }
 </style>
