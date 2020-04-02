@@ -2,24 +2,15 @@
 <div>
   <h1>Cart</h1>
   <div>
-  <p>
-    Mon nom est <input v-model="name">
-    et j'ai <input v-model="age"> ans.
-  </p>
-  <p>
-    <button @click="persist">Sauver</button>
-  </p>
-  </div>
-  <div>
-    <h2>Chats</h2>
-    <div v-for="(cat, n) in cats" :key="cat">
-      <p>
-        <span class="cat">{{ cat }}</span>
+    <h1>Chats</h1>
+    <div v-for="(cat, n) in cats" :key="cat.name">
+      <p> Name : <span>{{ cat.name }}</span></p>
+      <p> Price: <span>{{ cat.price }}</span></p>
         <button style="margin: 5px" @click="removeCat(n)">Enlever</button>
-      </p>
     </div>
     <p>
-      <input v-model="newCat">
+      <input v-model="cat.name" placeholder="Cat name">
+      <input v-model="cat.price" placeholder="Cat price">
       <button @click="addCat">Ajouter un chat</button>
     </p>
   </div>
@@ -32,18 +23,13 @@ export default {
   data () {
     return {
       cats: [],
-      newCat: null,
-      name: '',
-      age: 0
+      cat: {
+        name: '',
+        price: ''
+      }
     }
   },
   mounted () {
-    if (localStorage.name) {
-      this.name = localStorage.name
-    }
-    if (localStorage.age) {
-      this.age = localStorage.age
-    }
     if (localStorage.getItem('cats')) {
       try {
         this.cats = JSON.parse(localStorage.getItem('cats'))
@@ -53,25 +39,25 @@ export default {
     }
   },
   methods: {
-    persist () {
-      localStorage.name = this.name
-      localStorage.age = this.age
-    },
     addCat () {
-      if (!this.newCat) {
+      if (!this.cat) {
         return
       }
-      this.cats.push(this.newCat)
-      this.newCat = ''
+      this.cats.push(this.cat)
       this.saveCats()
+      this.cat.name = ''
+      this.cat.price = ''
+      window.console.log(this.cats)
     },
     removeCat (x) {
       this.cats.splice(x, 1)
       this.saveCats()
+      window.console.log(this.cats)
     },
     saveCats () {
       const parsed = JSON.stringify(this.cats)
       localStorage.setItem('cats', parsed)
+      this.cats = JSON.parse(localStorage.getItem('cats'))
     }
   }
 }
