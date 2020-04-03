@@ -12,14 +12,17 @@
         <button style="margin: 5px" @click="cloneCat(cat.id)">Clone</button>
     </div>
     </div>
-  <div class="deuze">
+  <div class="CloneChamber">
     <h1>Clone Chamber</h1>
     <div v-for="(cat, n) in cloneChamber" :key="cat.id">
       <p> Id : <span>{{ cat.id }}</span></p>
       <p> Name : <span>{{ cat.name }}</span></p>
       <p> Price: <span>{{ cat.price }}</span></p>
+      <p> Quantity: {{ n }}</p>
       <button style="margin: 5px" @click="removeClone(n)">Enlever</button>
     </div>
+    <p> Nombre d'article: {{ cloneChamber.length }}</p>
+    <p> Total : {{ getTotal()}} </p>
   </div>
 </div>
   <div>
@@ -64,6 +67,13 @@ export default {
     }
   },
   methods: {
+    getTotal () {
+      let total = 0
+      for (let i = 0; i < this.cloneChamber.length; i++) {
+        total += parseInt(this.cloneChamber[i].price)
+      }
+      return total
+    },
     addCat () {
       if (!this.cat) {
         return
@@ -117,7 +127,7 @@ export default {
 .first{
   flex: 1;
 }
-.deuze{
+.CloneChamber{
   flex: 1;
 }
 </style>
