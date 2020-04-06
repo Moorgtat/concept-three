@@ -73,7 +73,7 @@ export default {
     getTotal () {
       let total = 0
       for (let i = 0; i < this.cloneChamber.length; i++) {
-        total += parseInt(this.cloneChamber[i].price)
+        total += parseInt(this.cloneChamber[i].price) * parseInt(this.cloneChamber[i].quantity)
       }
       return total
     },
