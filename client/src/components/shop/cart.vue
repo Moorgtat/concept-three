@@ -19,10 +19,10 @@
       <p> Id : <span>{{ cat.id }}</span></p>
       <p> Name : <span>{{ cat.name }}</span></p>
       <p> Price: <span>{{ cat.price }}</span></p>
-      <p>Quantity: <button @click="getTotal">-</button> {{ cat.quantity }} <button @click="getTotal">+</button></p>
+      <p>Quantity: <button @click="minorOne(cat.id, n)">-</button> {{ cat.quantity }} <button @click="plusOne(cat.id)">+</button></p>
       <button style="margin: 5px" @click="removeClone(n)">Enlever</button>
     </div>
-    <p> Nombre d'article: {{ cloneChamber.length }}</p>
+    <p> Nombre d'article: {{ getTotalArticle() }}</p>
     <p> Total : {{ getTotal()}} </p>
   </div>
 </div>
@@ -70,6 +70,31 @@ export default {
     }
   },
   methods: {
+    plusOne (id) {
+      for (let i = 0; i < this.cloneChamber.length; i++) {
+        if (id === this.cloneChamber[i].id) {
+          this.cloneChamber[i].quantity = parseInt(this.cloneChamber[i].quantity) + 1
+        }
+      }
+    },
+    minorOne (id, x) {
+      for (let i = 0; i < this.cloneChamber.length; i++) {
+        if (id === this.cloneChamber[i].id) {
+          if (parseInt(this.cloneChamber[i].quantity) > 1) {
+            this.cloneChamber[i].quantity = parseInt(this.cloneChamber[i].quantity) - 1
+          } else {
+            this.removeClone(x)
+          }
+        }
+      }
+    },
+    getTotalArticle () {
+      let totalArticle = 0
+      for (let i = 0; i < this.cloneChamber.length; i++) {
+        totalArticle += parseInt(this.cloneChamber[i].quantity)
+      }
+      return totalArticle
+    },
     getTotal () {
       let total = 0
       for (let i = 0; i < this.cloneChamber.length; i++) {
