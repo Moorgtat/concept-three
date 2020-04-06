@@ -8,6 +8,7 @@
       <p> Id : <span>{{ cat.id }}</span></p>
       <p> Name : <span>{{ cat.name }}</span></p>
       <p> Price: <span>{{ cat.price }}</span></p>
+      <p> Quantity: <span>{{ cat.quantity }}</span></p>
         <button style="margin: 5px" @click="removeCat(n)">Enlever</button>
         <button style="margin: 5px" @click="cloneCat(cat.id)">Clone</button>
     </div>
@@ -18,7 +19,7 @@
       <p> Id : <span>{{ cat.id }}</span></p>
       <p> Name : <span>{{ cat.name }}</span></p>
       <p> Price: <span>{{ cat.price }}</span></p>
-      <p> Quantity: {{ n }}</p>
+      <p>Quantity: <button @click="getTotal">-</button> {{ cat.quantity }} <button @click="getTotal">+</button></p>
       <button style="margin: 5px" @click="removeClone(n)">Enlever</button>
     </div>
     <p> Nombre d'article: {{ cloneChamber.length }}</p>
@@ -30,6 +31,7 @@
       <input v-model="cat.id" placeholder="Cat id">
       <input v-model="cat.name" placeholder="Cat name">
       <input v-model="cat.price" placeholder="Cat price">
+      <input v-model="cat.quantity" placeholder="Cat quantity">
       <button @click="addCat">Ajouter un chat</button>
     </p>
   </div>
@@ -46,7 +48,8 @@ export default {
       cat: {
         id: '',
         name: '',
-        price: ''
+        price: '',
+        quantity: ''
       }
     }
   },
@@ -83,6 +86,7 @@ export default {
       this.cat.id = ''
       this.cat.name = ''
       this.cat.price = ''
+      this.cat.quantity = ''
       window.console.log(this.cats)
     },
     getCatById (id) {
@@ -92,6 +96,13 @@ export default {
       return ret[0]
     },
     cloneCat (id) {
+      for (let i = 0; i < this.cloneChamber.length; i++) {
+        if (id === this.cloneChamber[i].id) {
+          window.console.log('there is a copy')
+          this.cloneChamber[i].quantity = parseInt(this.cloneChamber[i].quantity) + 1
+          return
+        }
+      }
       const cat = this.getCatById(id)
       this.cloneChamber.push(cat)
       this.saveClones()
