@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import blog from '../components/blog/blog'
 import userBoard from '@/components/user/userBoard'
 import admin from '../components/admin/admin'
+import adminView from '@/components/admin/adminView'
 import shop from '../components/shop/shop'
 import login from '../components/auth/login'
 import register from '../components/auth/register'
@@ -13,6 +14,7 @@ import productEdit from '@/components/admin/productEdit'
 import postView from '@/components/admin/postView'
 import productView from '@/components/admin/productView'
 import userView from '@/components/admin/userView'
+import orderView from '@/components/admin/orderView'
 import store from '../store/index'
 import post from '@/components/blog/post'
 import cart from '@/components/shop/cart'
@@ -37,6 +39,12 @@ const routes = [
     component: admin,
     meta: { requiresAdminAuth: true },
     children: [
+      {
+        path: '/adminview',
+        name: 'adminView',
+        component: adminView,
+        meta: { requiresAdminAuth: true }
+      },
       {
         path: '/postview',
         name: 'postView',
@@ -78,6 +86,12 @@ const routes = [
         name: 'userView',
         component: userView,
         meta: { requiresAdminAuth: true }
+      },
+      {
+        path: '/orderview',
+        name: 'orderView',
+        component: orderView,
+        meta: { requiresAdminAuth: true }
       }
     ]
   },
@@ -116,7 +130,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAdminAuth)) {
-    if (store.state.isAdminLoggedIn) {
+    if (store.state.auth.isAdminLoggedIn) {
       next()
     } else {
       next({
@@ -124,7 +138,7 @@ router.beforeEach((to, from, next) => {
       })
     }
   } else if (to.matched.some(record => record.meta.requiresUserAuth)) {
-    if (store.state.isUserLoggedIn) {
+    if (store.state.auth.isUserLoggedIn) {
       next()
     } else {
       next({

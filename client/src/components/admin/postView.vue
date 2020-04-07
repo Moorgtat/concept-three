@@ -8,7 +8,7 @@
         <div class="post" v-for="post in posts" :key="post.id">
           <div class="post-title">{{ post.title }}</div>
           <div class="post-article">{{ post.article }}</div>
-          <img :src="post.imageUrl" alt="image du post"/>
+          <img class="h150-img" :src="post.imageUrl" alt="image du post"/>
           <br>
           <RouterLink :to="{ name: 'postEdit', params: {postId: post.id} }">
             <button class="btn-one">Edit</button>
@@ -51,5 +51,9 @@ export default {
   }
   .post-article {
     font-size: 14px;
+  }
+  .h150-img {
+    margin: 10px;
+    height: 150px;
   }
 </style>

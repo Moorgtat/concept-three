@@ -10,7 +10,7 @@
           <div class="product-description">{{ product.description }}</div>
           <div class="product-price">{{ product.price }}</div>
           <div class="product-quantity">{{ product.quantity }}</div>
-          <img :src="product.imageUrl" alt="image produit"/>
+          <img class="h150-img" :src="product.imageUrl" alt="image produit"/>
           <br>
           <RouterLink :to="{ name: 'productEdit', params: {productId: product.id} }">
             <button class="btn-one">Edit</button>

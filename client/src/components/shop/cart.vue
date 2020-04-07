@@ -2,13 +2,11 @@
 <div>
   <h1>Cart</h1>
 <div class="general">
-    <div class="first">
+    <div class="Chats">
     <h1>Chats</h1>
     <div v-for="(cat, n) in cats" :key="cat.id">
-      <p> Id : <span>{{ cat.id }}</span></p>
       <p> Name : <span>{{ cat.name }}</span></p>
       <p> Price: <span>{{ cat.price }}</span></p>
-      <p> Quantity: <span>{{ cat.quantity }}</span></p>
         <button style="margin: 5px" @click="removeCat(n)">Enlever</button>
         <button style="margin: 5px" @click="cloneCat(cat.id)">Clone</button>
     </div>
@@ -16,7 +14,6 @@
   <div class="CloneChamber">
     <h1>Clone Chamber</h1>
     <div v-for="(cat, n) in cloneChamber" :key="cat.id">
-      <p> Id : <span>{{ cat.id }}</span></p>
       <p> Name : <span>{{ cat.name }}</span></p>
       <p> Price: <span>{{ cat.price }}</span></p>
       <p>Quantity: <button @click="minorOne(cat.id, n)">-</button> {{ cat.quantity }} <button @click="plusOne(cat.id)">+</button></p>
@@ -26,7 +23,7 @@
     <p> Total : {{ getTotal()}} </p>
   </div>
 </div>
-  <div>
+  <div class="chatForm">
     <p>
       <input v-model="cat.id" placeholder="Cat id">
       <input v-model="cat.name" placeholder="Cat name">
@@ -156,14 +153,21 @@ export default {
 </script>
 
 <style scoped>
-.general{
-  display: flex;
-  flex-direction: row;
-}
-.first{
-  flex: 1;
-}
-.CloneChamber{
-  flex: 1;
-}
+  .general {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .Chats {
+    width: 200px;
+  }
+
+  .CloneChamber {
+    width: 200px;
+  }
+
+  .chatForm {
+    margin: 20px 10%;
+  }
 </style>

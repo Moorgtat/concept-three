@@ -3,6 +3,7 @@
   <div id="nav">
     <RouterLink :to="{ name: 'postView' }">Posts</RouterLink>
     <RouterLink :to="{ name: 'productView' }"> | Products</RouterLink>
+    <RouterLink :to="{ name: 'orderView' }"> | Orders</RouterLink>
     <RouterLink :to="{ name: 'userView' }"> | Users</RouterLink>
   </div>
   <div>

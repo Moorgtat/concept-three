@@ -1,6 +1,5 @@
 <template>
 <div class="blog">
-  <h1>Hello World!</h1>
   <div class="post-container">
     <div class="post" v-for="post in posts" :key="post.id">
       <div>
@@ -37,22 +36,19 @@ export default {
   body {
     margin: 0;
   }
+  .blog {
+    display: flex;
+    justify-content: center;
+  }
   .post-container {
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*flex-wrap: wrap;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
     margin: 0 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 1130px;
-    height: 100vw;
+    width: 100vw;
     max-height: 850px;
   }
   .post {
-    width: 33%;
     margin-bottom: 20px;
     flex-direction: column;
     justify-content: center;

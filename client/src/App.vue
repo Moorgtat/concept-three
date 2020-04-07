@@ -3,12 +3,12 @@
     <div id="nav">
       <router-link to="/">home</router-link>
       <router-link to="/shop"> | shop</router-link>
-      <router-link v-if="this.$store.state.isUserLoggedIn && !this.$store.state.isAdminLoggedIn" to="/userboard"> | userboard</router-link>
-      <router-link v-if="this.$store.state.isAdminLoggedIn" to="/admin"> | admin</router-link>
-      <router-link v-if="!this.$store.state.isUserLoggedIn" to="/login"> | login</router-link>
-      <router-link v-if="!this.$store.state.isUserLoggedIn" to="/register"> | register</router-link>
-      <router-link to="/cart"><button class="btn-one" id="cart-ico">Cart</button></router-link>
-      <button id="btn-logout" v-if="this.$store.state.isUserLoggedIn" @click="logout" class="btn-one">Logout</button>
+      <router-link v-if="this.$store.state.auth.isUserLoggedIn && !this.$store.state.auth.isAdminLoggedIn" to="/userboard"> | userboard</router-link>
+      <router-link to="/cart"> | cart</router-link>
+      <router-link v-if="this.$store.state.auth.isAdminLoggedIn" to="/adminview"> | admin</router-link>
+      <router-link v-if="!this.$store.state.auth.isUserLoggedIn" to="/login"> | login</router-link>
+      <router-link v-if="!this.$store.state.auth.isUserLoggedIn" to="/register"> | register</router-link>
+      <button id="btn-logout" v-if="this.$store.state.auth.isUserLoggedIn" @click="logout" class="btn-one">Logout</button>
     </div>
     <router-view/>
   </div>
@@ -35,9 +35,6 @@ export default {
     font-family: 'Oswald', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   #nav {
@@ -76,10 +73,5 @@ export default {
     position: absolute;
     right: 20px;
     top: 20px;
-  }
-  #cart-ico {
-    position: absolute;
-    right: 100px;
-    top: 20px
   }
 </style>
