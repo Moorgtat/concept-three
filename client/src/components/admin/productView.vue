@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .product-container {
     display: flex;
     flex-direction: row;
@@ -56,5 +56,9 @@ export default {
   }
   .product-price {
     font-size: 9px;
+  }
+  .h150-img {
+    margin: 10px;
+    height: 150px;
   }
 </style>

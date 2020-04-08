@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .post-container {
     display: flex;
     flex-direction: row;

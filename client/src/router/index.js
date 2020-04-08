@@ -18,6 +18,7 @@ import orderView from '@/components/admin/orderView'
 import store from '../store/index'
 import post from '@/components/blog/post'
 import cart from '@/components/shop/cart'
+import cartX from '@/components/shop/cartX'
 
 Vue.use(VueRouter)
 
@@ -104,6 +105,11 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: cart
+  },
+  {
+    path: '/cartx',
+    name: 'cartX',
+    component: cartX
   },
   {
     path: '/post',
