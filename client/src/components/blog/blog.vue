@@ -41,12 +41,12 @@ export default {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 1200px;
+    width: 960px;
     max-height: 850px;
   }
   .post {
+    margin: 10px;
     display: flex;
-    margin: 20px;
     width: 300px;
     flex-direction: column;
   }
