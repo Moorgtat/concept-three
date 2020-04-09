@@ -4,7 +4,8 @@
       <router-link to="/">home</router-link>
       <router-link to="/shop"> | shop</router-link>
       <router-link v-if="this.$store.state.auth.isUserLoggedIn && !this.$store.state.auth.isAdminLoggedIn" to="/userboard"> | userboard</router-link>
-      <router-link to="/cartx"> | cart</router-link>
+      <router-link to="/cart"> | cart</router-link>
+      <router-link to="/cartx"> | cartx</router-link>
       <router-link v-if="this.$store.state.auth.isAdminLoggedIn" to="/adminview"> | admin</router-link>
       <router-link v-if="!this.$store.state.auth.isUserLoggedIn" to="/login"> | login</router-link>
       <router-link v-if="!this.$store.state.auth.isUserLoggedIn" to="/register"> | register</router-link>
