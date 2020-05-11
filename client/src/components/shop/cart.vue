@@ -73,6 +73,7 @@ export default {
           this.cloneChamber[i].quantity = parseInt(this.cloneChamber[i].quantity) + 1
         }
       }
+      this.saveClones()
     },
     minorOne (id, x) {
       for (let i = 0; i < this.cloneChamber.length; i++) {
@@ -84,6 +85,7 @@ export default {
           }
         }
       }
+      this.saveClones()
     },
     getTotalArticle () {
       let totalArticle = 0
@@ -122,6 +124,7 @@ export default {
         if (id === this.cloneChamber[i].id) {
           window.console.log('there is a copy')
           this.cloneChamber[i].quantity = parseInt(this.cloneChamber[i].quantity) + 1
+          this.saveClones()
           return
         }
       }

@@ -1,20 +1,27 @@
 export const cart = {
   state: {
-    cart: JSON.parse(localStorage.getItem('cloneChamber')),
-    cartPrice: '',
-    cartItemNumber: '',
-    item: {}
+    cart: [{
+      name: 'essai',
+      price: 14,
+      quantity: 1
+    }, {
+      name: 'esi',
+      price: 18,
+      quantity: 1
+    }
+    ]
+  },
+  getters: {
+    mycart: state => {
+      return state.cart
+    }
   },
   actions: {
-    addItem () {},
-    minorItem () {},
-    deleteItem () {}
-  },
-  mutations: {
-    setcart () {
+    saveCart () {
       const parsed = JSON.stringify(this.state.cart)
       localStorage.setItem('cloneChamber', parsed)
-      this.cloneChamber = JSON.parse(localStorage.getItem('cloneChamber'))
     }
+  },
+  mutations: {
   }
 }

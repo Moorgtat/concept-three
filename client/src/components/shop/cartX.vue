@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Cart X</h1>
-    <div v-for="item in cart" :key="item">
+    <div v-for="item in mycart" :key="item">
       <p> Name : <span>{{ item.name }}</span></p>
       <p> Price: <span>{{ item.price }}</span></p>
       <p> Quantity <span>{{ item.quantity }}</span></p>
@@ -14,19 +14,25 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'cartX',
   data () {
     return {
-      cart: '',
-      item: '',
-      ship: {
-        id: 6,
-        name: 'Test',
-        price: 666,
-        quantity: 6
+      cart: [{
+        name: 'essai',
+        price: 14,
+        quantity: 1
+      }, {
+        name: 'esi',
+        price: 18,
+        quantity: 1
       }
+      ]
     }
+  },
+  computed: {
+    ...mapGetters('mycart')
   },
   methods: {
     getTotalArticle () {
@@ -43,9 +49,6 @@ export default {
       }
       return total
     }
-  },
-  mounted () {
-    this.cart = this.$store.state.cart.cart
   }
 }
 </script>
