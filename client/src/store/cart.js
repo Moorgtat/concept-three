@@ -1,27 +1,22 @@
 export const cart = {
   state: {
-    cart: [{
-      name: 'essai',
-      price: 14,
-      quantity: 1
-    }, {
-      name: 'esi',
-      price: 18,
-      quantity: 1
-    }
-    ]
+    count: 5,
+    cartvuex: [{ id: 1, name: 'vuex', price: 10, quantity: 1 }]
   },
-  getters: {
-    mycart: state => {
-      return state.cart
+  mutations: {
+    increment (state) {
+      state.count++
+    },
+    decrement (state) {
+      state.count--
     }
   },
   actions: {
-    saveCart () {
-      const parsed = JSON.stringify(this.state.cart)
-      localStorage.setItem('cloneChamber', parsed)
+    increment ({ commit }) {
+      commit('increment')
+    },
+    decrement ({ commit }) {
+      commit('decrement')
     }
-  },
-  mutations: {
   }
 }
