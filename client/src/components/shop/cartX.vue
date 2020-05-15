@@ -10,6 +10,7 @@
       <p> Name : <span>{{ item.name }}</span></p>
       <p> Price: <span>{{ item.price }}</span></p>
       <p> Quantity: <span>{{ item.quantity }}</span></p>
+      <button @click="additem(payload)"> PLUS </button>
     </div>
 <!--    <div>-->
 <!--      <p> Nombre d'articles: {{ getTotalArticle () }}</p>-->
@@ -23,11 +24,12 @@ import { mapActions } from 'vuex'
 export default {
   name: 'cartX',
   data () {
-    return {}
+    return {
+      payload: { id: 2, name: 'vuexo', price: 10, quantity: 1 }
+    }
   },
   methods: {
-    ...mapActions(['decrement']),
-    ...mapActions(['increment'])
+    ...mapActions(['decrement', 'increment', 'additem'])
     // ,
     // getTotalArticle () {
     //   let totalArticle = 0
